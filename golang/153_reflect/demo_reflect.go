@@ -69,7 +69,7 @@ func testReflectStruct(i interface{}) {
 	numMethod := inParamValue.NumMethod()
 	fmt.Println("传入参数的类型含有方法的数量：", numMethod)
 	// 调用方法，方法的首字母必须大写才能有对应的反射的访问权限
-	// 方法的顺序按照ASCII的顺序排列的，a,b,c...索引：0,1,2...
+	// inParamValue.Method方法的顺序按照ASCII的顺序排列的，a,b,c...索引：0,1,2...
 	println("\n 调用没有入参的方法")
 	inParamValue.Method(0).Call(nil)
 
@@ -77,7 +77,7 @@ func testReflectStruct(i interface{}) {
 	var params []reflect.Value
 	params = append(params, reflect.ValueOf("Jason"))
 	params = append(params, reflect.ValueOf(20))
-	result := inParamValue.Method(1).Call(params)
+	result := inParamValue.MethodByName("BSet").Call(params)
 	fmt.Println("Student.BSet方法的返回值为：", result[0])
 }
 
