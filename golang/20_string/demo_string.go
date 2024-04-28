@@ -5,9 +5,9 @@ import (
 	"strconv"
 )
 
-//Golang中没有专门的字符类型，如果要存储单个字符(字母)，一般使用byte来保存。
-//Golang中字符使用UTF-8编码
-//可从【http://www.mytju.com/classcode/tools/encode_utf8.asp 】查看UTF-8编码表
+// Golang中没有专门的字符类型，如果要存储单个字符(字母)，一般使用byte来保存。
+// Golang中字符使用UTF-8编码
+// 可从【http://www.mytju.com/classcode/tools/encode_utf8.asp 】查看UTF-8编码表
 func main() {
 	//定义字符类型的数据：
 	var c1 byte = 'a'
