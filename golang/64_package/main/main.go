@@ -11,11 +11,11 @@ package main
 // （2）在源文件层面就是一个文件夹
 import (
 	"fmt"
-	"sen-golang-study/64_package/utils"
+	utils2 "sen-golang-study/golang/64_package/utils"
 )
 
 func main() {
 	fmt.Println("main函数")
-	utils.ExchangeNum(10, 20)
-	utils.GetConn()
+	utils2.ExchangeNum(10, 20)
+	utils2.GetConn()
 }

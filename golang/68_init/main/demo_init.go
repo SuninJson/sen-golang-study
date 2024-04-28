@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"sen-golang-study/68_init"
+	"sen-golang-study/golang/68_init"
 )
 
 var num = test()
@@ -22,5 +22,5 @@ func init() {
 func main() {
 	fmt.Println("main函数被执行")
 	fmt.Println("main文件中的测试变量值为：", num)
-	fmt.Println("test_init中的测试变量值为：", test_init.TestVar)
+	fmt.Println("test_init中的测试变量值为：", test_init.test_init.TestVar)
 }
