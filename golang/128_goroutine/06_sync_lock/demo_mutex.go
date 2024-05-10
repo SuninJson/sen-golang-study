@@ -1,15 +1,19 @@
-package main
+package _6_sync_lock
 
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 var totalNum int
-var wg sync.WaitGroup
 var lock sync.Mutex
 
-func main() {
+// 读写锁
+var rwLock sync.RWMutex
+
+func DemoMutex() {
+	wg := sync.WaitGroup{}
 	println("\n未加锁时，多个协程操作同一数据")
 	wg.Add(2)
 	go func() {
@@ -39,6 +43,24 @@ func main() {
 	fmt.Println("加锁时，多个协程操作同一数据的结果：", totalNum)
 }
 
+func DemoRWMutex() {
+	wg := sync.WaitGroup{}
+	wg.Add(6)
+	println("读多写少的场景下使用读写锁，锁在写时生效，不影响并发的读")
+	for i := 0; i < 5; i++ {
+		go func() {
+			defer wg.Done()
+			read()
+		}()
+	}
+
+	go func() {
+		defer wg.Done()
+		write()
+	}()
+	wg.Wait()
+}
+
 func add() {
 	for i := 0; i < 100000; i++ {
 		totalNum = totalNum + 1
@@ -65,4 +87,20 @@ func syncSub() {
 		totalNum = totalNum - 1
 		lock.Unlock()
 	}
+}
+
+func read() {
+	rwLock.RLock()
+	fmt.Println("开始读取数据")
+	time.Sleep(time.Second)
+	fmt.Println("读取数据成功")
+	rwLock.RUnlock()
+}
+
+func write() {
+	rwLock.Lock()
+	fmt.Println("开始修改数据")
+	time.Sleep(time.Second * 10)
+	fmt.Println("修改数据成功")
+	rwLock.Unlock()
 }
