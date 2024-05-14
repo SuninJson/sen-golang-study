@@ -1,19 +1,25 @@
-package main
+package _1_tcp
 
 import (
 	"fmt"
 	"net"
 )
 
-func main() {
+func StartServer() {
 	println("启动服务端。。。")
+	// net.Listen函数中 network参数 表示网络类型, 支持的TCP类型字符串:
+	//- tcp, 使用IPv4或IPv6
+	//- tcp4, 仅使用IPv4
+	//- tcp6, 仅使用IPv6
+	//- 省略IP部分, 绑定可用的全部IP, 包括IPv4和IPv6
 	listener, err := net.Listen("tcp", "127.0.0.1:8888")
 	if err != nil {
 		fmt.Println("监听失败：", err)
 		return
 	}
 
-	// 若监听成功，则循环等待客户端的链接
+	// 若监听成功，则循环等待客户端的连接
+	fmt.Println("等待客户端的连接")
 	for {
 		conn, acceptErr := listener.Accept()
 		if acceptErr != nil {
