@@ -31,3 +31,11 @@ func TestTcpServerPool(t *testing.T) {
 func TestTcpClientPool(t *testing.T) {
 	TcpClientPool()
 }
+
+func TestTcpServerEncoder(t *testing.T) {
+	TcpServerEncoder()
+}
+
+func TestTcpClientDecoder(t *testing.T) {
+	TcpClientDecoder()
+}
