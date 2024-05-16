@@ -23,3 +23,11 @@ func TestTcpServerHeartBeat(t *testing.T) {
 func TestTcpClientHeartBeat(t *testing.T) {
 	TcpClientHeartBeat()
 }
+
+func TestTcpServerPool(t *testing.T) {
+	TcpServerPool()
+}
+
+func TestTcpClientPool(t *testing.T) {
+	TcpClientPool()
+}
