@@ -9,3 +9,11 @@ func TestUDPServerBasic(t *testing.T) {
 func TestUDPClientBasic(t *testing.T) {
 	UDPClientBasic()
 }
+
+func TestUDPServerConnect(t *testing.T) {
+	UDPServerConnect()
+}
+
+func TestUDPClientConnect(t *testing.T) {
+	UDPClientConnect()
+}
