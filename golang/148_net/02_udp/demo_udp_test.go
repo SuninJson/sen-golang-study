@@ -25,3 +25,11 @@ func TestUDPReceiverBroadcast(t *testing.T) {
 func TestUDPSenderBroadcast(t *testing.T) {
 	UDPSenderBroadcast()
 }
+
+func TestUDPFileServer(t *testing.T) {
+	UDPFileServer()
+}
+
+func TestUDPFileClient(t *testing.T) {
+	UDPFileClient()
+}
