@@ -17,3 +17,11 @@ func TestUDPServerConnect(t *testing.T) {
 func TestUDPClientConnect(t *testing.T) {
 	UDPClientConnect()
 }
+
+func TestUDPReceiverBroadcast(t *testing.T) {
+	UDPReceiverBroadcast()
+}
+
+func TestUDPSenderBroadcast(t *testing.T) {
+	UDPSenderBroadcast()
+}
