@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+// 1.定义用于在服务间传递的消息，以产品响应信息和请求信息为例
+message ProductResponse{
+  string name = 1;
+  int64 id = 2;
+  bool is_sale = 3;
+}
+
+message ProductRequest{
+  int64 id = 1;
+}
+
+// 2.定义服务，以产品服务为例
+service Product{
+  rpc ProductInfo(ProductRequest) returns (ProductResponse){}
+}
+
+// 3.声明go代码所在的包
+option go_package = "./compiles";
+
+// 4.通过 protoc --go_out=. --go-grpc_out=. product.proto 命令编译为目标语言的代码
