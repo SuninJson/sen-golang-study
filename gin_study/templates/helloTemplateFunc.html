@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/hello.css">
+</head>
+<body>
+<h1>模板函数</h1>
+print:{{print "hello"}}<br>
+printf:{{printf "名字：%s,年龄：%d" "Sen" 18}}<br>
+len:{{len .arr}}<br>
+管道传递符：{{"msb" | printf "%s"}}<br>
+eq：等于equal，返回布尔值 {{eq 26 89}} <br>
+ne：不等于 not equal，返回布尔值 {{ne 26 89}} <br>
+lt：小于 less than，返回布尔值 {{lt 26 89}} <br>
+le：小于等于less equal，返回布尔值 {{le 26 89}} <br>
+gt：大于 greater than，返回布尔值 {{gt 26 89}} <br>
+ge：大于等于 greater equal，返回布尔值 {{ge 26 89}} <br>
+日期格式化  Format {{.nowTime.Format "2006-01-02 15-04-05"}} <br>
+自定义函数Add：{{add 1 2}}<br>
+</body>
+</html>

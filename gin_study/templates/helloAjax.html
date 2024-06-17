@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/hello.css">
+    <script src="/static/js/jQuery.min.js"></script>
+</head>
+<body>
+定义一个用户的form表单：
+<form action="/getUserInfo" method="post">
+    用户名：<input type="text" name="username" id="uname"><span id="errMsg"></span><br>
+    密码：<input type="password" name="pwd">
+    <input type="submit" value="提交">
+</form>
+<script>
+    //获取用户名的文本框
+    unametext = document.getElementById("uname");
+    //给文本框绑定一个事件：失去焦点的时候会触发后面的函数的事件
+    unametext.onblur = function () {
+        //获取文本框的内容：
+        const uname = unametext.value;
+        //alert(uname)可以弹出数据，验证代码的正确性
+        // 局部刷新：通过ajax技术来实现数据的校验 ---> 后台 ：异步访问，局部刷新
+        // 调用ajax方法需要传入json格式的数据： $.ajax({属性名:属性值,属性名:属性值,方法名:方法})
+        $.ajax({
+            url: "/validateUserName",
+            type: "POST",
+            data: {"uname": uname},
+            success: function (info) {
+                //后台响应成功会调用函数,info-后台响应的数据封装到info中，info名字可以随便起
+                document.getElementById("errMsg").innerText = info["msg"]
+            },
+            fail: function () {
+            }
+        })
+    }
+</script>
+
+
+</body>
+</html>

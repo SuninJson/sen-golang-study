@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jQuery.min.js"></script>
+</head>
+<body>
+<h1>上传多个文件</h1>
+<form method="post">
+    <input type="file" class="myfile">
+    <input type="file" class="myfile">
+    <input type="file" class="myfile">
+    <input type="button" value="提交按钮" id="btn">
+</form>
+</body>
+</html>
+
+<script>
+    btn = document.getElementById("btn");
+    btn.onclick = function () {
+        var form_data = new FormData();
+        //对多个文件进行遍历，每一个添加到form_data中去：
+        var myfiles = $(".myfile");
+        for (var i = 0; i < myfiles.length; i++) {
+            form_data.append("myfile", myfiles[i].files[0]);
+        }
+        //利用ajax向后台传递数据：
+        $.ajax({
+            url: "/uploadFiles",
+            type: "POST",
+            data: form_data,
+            contentType: false,
+            processData: false,
+            success: function () {
+            }
+        })
+    }
+</script>

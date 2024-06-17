@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/hello.css">
+</head>
+<body>
+定义一个用户的form表单：
+<form action="/getUserInfo" method="post">
+    用户名：<label><input type="text" name="username"></label><br>
+    密码：<label><input type="password" name="pwd"></label><br>
+    年龄：<label><input type="text" name="age"></label><br>
+    你喜欢的编程语言：
+    java:<label><input type="checkbox" name="lovelang" value="0"></label><br>
+    go:<label><input type="checkbox" name="lovelang" value="1"></label><br>
+    python:<label><input type="checkbox" name="lovelang" value="2"></label><br>
+    c:<label><input type="checkbox" name="loveLanguage" value="3"></label><br>
+    地址：<label><input type="text" name="user[addr]"></label><br>
+    邮件：<label><input type="text" name="user[email]"></label><br>
+    <label><input type="submit" value="提交"></label><br>
+</form>
+</body>
+</html>

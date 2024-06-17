@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/hello.css">
+</head>
+<body>
+<h1>上传文件</h1>
+<!--注意：在上传文件的时候，在表单中要加入：enctype="multipart/form-data" -->
+<!--enctype 全写为 encode type，即编码类型的意思-->
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="uploadedFile">
+    <input type="submit" value="提交"></form>
+</body>
+</html>

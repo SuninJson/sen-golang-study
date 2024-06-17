@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jQuery.min.js"></script>
+</head>
+<body> 这是hello3.html页面
+<form>
+    用户名字：<input type="text" name="uname" id="uname">
+    年龄：<input type="text" name="age" id="age">
+    <input type="button" value="提交" id="btn">
+</form>
+
+</body>
+</html>
+
+<script>
+    //获取按钮
+    let btn = document.getElementById("btn");
+    //给按钮绑定单击事件：
+    btn.onclick = function () {
+        //获取表单中元素：
+        const uname = document.getElementById("uname").value;
+        const age = document.getElementById("age").value;
+        //通过ajax方式向后台传递：
+        $.ajax({
+            url: "/doBindFormJSON",
+            type: "POST",
+            //如果向后台提交的是Json字符串需要加入这个属性：
+            contentType: "application/json",
+            //JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。
+            data: JSON.stringify({"uname": uname, "age": Number(age)}), success: function (info) {
+                alert(info["msg"])
+            }
+        })
+    }
+</script>
