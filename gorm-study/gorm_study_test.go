@@ -21,3 +21,7 @@ func TestUpdate(t *testing.T) {
 func TestDelete(t *testing.T) {
 	Delete()
 }
+
+func TestMigrate(t *testing.T) {
+	Migrate()
+}
