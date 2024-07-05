@@ -72,7 +72,7 @@ func customLogger(initLoggerType int) logger.Interface {
 func namingStrategy() schema.NamingStrategy {
 	return schema.NamingStrategy{
 		// 表名前缀
-		TablePrefix: "gorm_study_",
+		TablePrefix: "",
 		// 是否单数表名，默认为复数表名
 		SingularTable: true,
 		// 替换器，用于替换特定字符串

@@ -1,6 +1,9 @@
 package gorm_study
 
-import "testing"
+import (
+	"gorm-study/03_model_def/01_table_name"
+	"testing"
+)
 
 func TestBasicUse(t *testing.T) {
 	BasicUse()
@@ -23,5 +26,5 @@ func TestDelete(t *testing.T) {
 }
 
 func TestMigrate(t *testing.T) {
-	Migrate()
+	_1_table_name.CreateBoxTable()
 }
