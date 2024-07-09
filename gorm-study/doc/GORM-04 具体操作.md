@@ -991,11 +991,13 @@ SQL的where子句用于控制查询条件，使用如下方法来控制where子�
 func WhereMethod() {
 	var cs []Content
 
+    // 使用 Find 方法中condition字段
 	// SELECT * FROM `msb_content` WHERE likes > 100 AND subject like 'gorm%' AND `msb_content`.`deleted_at` IS NULL
 	//if err := DB.Find(&cs, "likes > ? and subject like ?", 100, "gorm%").Error; err != nil {
 	//	log.Fatalln(err)
 	//}
 
+    // 通过where来根据字段是否为空来动态的控制条件查询
 	// SELECT * FROM `msb_content` WHERE likes > 100 AND subject like 'gorm%' AND `msb_content`.`deleted_at` IS NULL
 	//query := DB.Where("likes > ?", 100)
 	//query.Where("subject like ?", "gorm%")
@@ -1003,6 +1005,7 @@ func WhereMethod() {
 	//	log.Fatalln(err)
 	//}
 
+    // 如何在where中使用 OR 条件
 	// SELECT * FROM `msb_content` WHERE (likes > 100 OR subject like 'gorm%') AND `msb_content`.`deleted_at` IS NULL
 	//query := DB.Where("likes > ?", 100)
 	//query.Or("subject like ?", "gorm%")
@@ -1010,6 +1013,7 @@ func WhereMethod() {
 	//	log.Fatalln(err)
 	//}
 
+    // 如何在where中使用 NOT 条件
 	// SELECT * FROM `msb_content` WHERE NOT likes > 100 AND subject like 'gorm%' AND `msb_content`.`deleted_at` IS NULL
 	query := DB.Not("likes > ?", 100)
 	query.Where("subject like ?", "gorm%")

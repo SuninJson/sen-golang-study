@@ -78,6 +78,6 @@ func namingStrategy() schema.NamingStrategy {
 		// 替换器，用于替换特定字符串
 		NameReplacer: nil,
 		// 是否为name_casing形式
-		NoLowerCase: true,
+		NoLowerCase: false,
 	}
 }
