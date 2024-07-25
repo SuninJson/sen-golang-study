@@ -4,11 +4,13 @@ import (
 	"bytes"
 	"io"
 	"log"
+	"net"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // HTTP反向代理完整版：用ReverseProxy实现
@@ -31,6 +33,17 @@ func main() {
 	var addr = "127.0.0.1:8081"
 	log.Println("Starting http proxy server at " + addr)
 	log.Fatalln(http.ListenAndServe(addr, proxy))
+}
+
+var transport = &http.Transport{
+	DialContext: (&net.Dialer{
+		Timeout:   30 * time.Second, // 拨号超时时间
+		KeepAlive: 30 * time.Second, // 长连接超时时间
+	}).DialContext,
+	MaxIdleConns:          100,              //最大空闲连接数
+	IdleConnTimeout:       90 * time.Second, //空闲连接超时时间
+	TLSHandshakeTimeout:   10 * time.Second, //TLS握手超时时间
+	ExpectContinueTimeout: time.Second,      //
 }
 
 func NewSingleHostReverseProxy(target *url.URL) *httputil.ReverseProxy {
