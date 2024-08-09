@@ -1,12 +1,17 @@
 package tcp_proxy
 
+import (
+	"context"
+	"net"
+)
+
 type TCPHandler interface {
-	TCPServe()
+	Serve(context.Context, net.Conn)
 }
 
 type DefaultTCPHandler struct {
 }
 
-func (handler DefaultTCPHandler) TCPServe() {
-
+func (handler DefaultTCPHandler) Serve(ctx context.Context, conn net.Conn) {
+	conn.Write([]byte("Pong!TCP handler here.\n"))
 }
