@@ -2,9 +2,12 @@ package demo_util
 
 import (
 	"fmt"
+	"io/fs"
 	"log"
 	"os"
 	"path/filepath"
+	"sort"
+	"strconv"
 	"strings"
 )
 
@@ -55,5 +58,40 @@ func doReplace(oldStr string, newStr string) func(path string, info os.FileInfo,
 			fmt.Printf("文件夹已重命名：%s -> %s\n", path, newPath)
 		}
 		return nil
+	}
+}
+
+func RenameFilesSequentially(dirPath string) {
+
+	entries, err := os.ReadDir(dirPath)
+	if err != nil {
+		fmt.Println("Read directory error:", err)
+		return
+	}
+	fileInfos := make([]fs.FileInfo, 0, len(entries))
+	for _, entry := range entries {
+		info, err := entry.Info()
+		if err != nil {
+			fmt.Println("Read directory error:", err)
+			return
+		}
+		fileInfos = append(fileInfos, info)
+	}
+
+	sort.Slice(fileInfos, func(i, j int) bool {
+		return fileInfos[i].Name() < fileInfos[j].Name()
+	})
+
+	for i, fileInfo := range fileInfos {
+		oldPath := filepath.Join(dirPath, fileInfo.Name())
+		newName := strconv.Itoa(i+1) + filepath.Ext(fileInfo.Name())
+		newPath := filepath.Join(dirPath, newName)
+
+		err := os.Rename(oldPath, newPath)
+		if err != nil {
+			fmt.Println("Failed to rename file:", err)
+		} else {
+			fmt.Printf("File renamed from %s to %s\n", oldPath, newPath)
+		}
 	}
 }

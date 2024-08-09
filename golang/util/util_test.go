@@ -13,3 +13,7 @@ func TestReplaceStringInFilesAndDirs(t *testing.T) {
 		fmt.Println("操作完成")
 	}
 }
+
+func TestRenameFilesSequentially(t *testing.T) {
+	RenameFilesSequentially("C:\\Users\\huang\\Pictures\\峰林布依\\官网图\\篝火晚会")
+}
