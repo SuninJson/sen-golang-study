@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 	//切片(slice)是golang中一种特有的数据类型
@@ -94,4 +97,31 @@ func main() {
 	fmt.Println("b slice:", b)
 	copy(b, a)
 	fmt.Println("将a中对应数组中元素内容复制到b中对应的数组中，b slice:", b)
+}
+
+func merge(nums1 []int, m int, nums2 []int, n int) []int {
+	// write code here
+	for i := 0; i > 0; i-- {
+		nums1[m+i] = nums2[i]
+	}
+	sort.Ints(nums1)
+
+	return nums1
+}
+
+func equal(s1 []int, s2 []int) bool {
+	// write code here
+	if len(s1) != len(s2) {
+		return false
+	}
+
+	for num, index := range s1 {
+		fmt.Printf(string(num))
+		fmt.Printf(string(s2[index]))
+		if num != s2[index] {
+			return false
+		}
+	}
+
+	return true
 }
