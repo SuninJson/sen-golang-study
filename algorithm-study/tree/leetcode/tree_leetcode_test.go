@@ -24,3 +24,9 @@ func TestIsCompleteTree(t *testing.T) {
 	root.Right.Right = &TreeNode{Val: 8}
 	IsCompleteTree(root)
 }
+
+func TestPathTarget(t *testing.T) {
+	root := buildTreeFromLevelOrder([]int{1, -2, -3, 1, 3, -2, 0, -1})
+	target := pathTarget(root, -1)
+	fmt.Println(target)
+}
