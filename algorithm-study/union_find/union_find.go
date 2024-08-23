@@ -35,6 +35,7 @@ func (unionFind *UnionFind) Find(num int) int {
 	}
 	// 路径压缩，将路径上的所有节点的父节点指向根节点
 	for helpIndex > 0 {
+		// 注意helpIndex中的最后一个元素是根节点，不需要处理，所以先将helpIndex减一
 		helpIndex--
 		onTheWayNum := unionFind.help[helpIndex]
 		unionFind.parent[onTheWayNum] = num
